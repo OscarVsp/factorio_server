@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-FACTORIO_VERSION=${FACTORIO_VERSION - 'stable'}
+FACTORIO_VERSION=${FACTORIO_VERSION-'stable'}
 PACKAGE_PATH=${PACKAGE_PATH-'/tmp/factorio.tar.xz'}
 INSTALL_PATH=${INSTALL_PATH-'/opt'}
 SERVER_SETTINGS_PATH='config/server-settings.json'
@@ -16,8 +16,7 @@ sudo tar -xvf $PACKAGE_PATH
 sudo chown -R $USER:$USER /opt/factorio
 
 cd factorio/
-
-wget -o
+mkdir config
 
 cp data/server-settings.example.json $SERVER_SETTINGS_PATH
 echo '[]' >$SERVER_WHITELIST_PATH
