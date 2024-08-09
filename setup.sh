@@ -180,14 +180,6 @@ init() {
     msg "${running} Initialisation"
     nb_line=1
 
-    if ! sudo -vn 2> /dev/null
-    then
-        msg "\t${running} sudo permission needed"
-        ((nb_line++))
-        sudo -v
-        msg "\t${succed} sudo permission granted" -c 2
-    fi
-
     ## Run the install_pkg function if sany of the libraries are missing
     missing=0
     dpkg -s "${libraries[@]}" >/dev/null 2>&1 || install_pkg
@@ -364,6 +356,14 @@ exec 5<&1
 exec 1>> ${log_file} 2>&1
 
 # script logic here
+
+if ! sudo -vn 2> /dev/null
+then
+    msg "\t${running} sudo permission needed"
+    sudo -v
+    clear
+fi
+
 init
 install_game
 install_manager
